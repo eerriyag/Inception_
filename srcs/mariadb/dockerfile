@@ -1,0 +1,9 @@
+FROM debian:12
+
+RUN apt-get update && \
+    apt-get install -y mariadb-server 
+
+COPY tools/script.sh /mariadb-init.sh
+RUN chmod +x /mariadb-init.sh
+
+ENTRYPOINT ["/mariadb-init.sh"]
